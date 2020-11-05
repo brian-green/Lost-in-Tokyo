@@ -1,13 +1,13 @@
-const Highlight = props => (
-  <span className={`relative highlight highlight-${props.color}`}>
-    <span className="relative z-2">{props.children}</span>
+const Highlight = ({children, color}) => (
+  <span className={`relative highlight highlight-${color}`}>
+    <span className="relative z-2">{children}</span>
   </span>
 );
 
-const NavItem = props => (
-  <li className={`mh2-ns f6 f4-l tc ${props.className}`}>
-    <a className="white no-underline" href={props.href}>
-      {props.children}
+const NavItem = ({className, href, children}) => (
+  <li className={`mh2-ns f6 f4-l tc ${className}`}>
+    <a className="white no-underline" href={href}>
+      {children}
     </a>
   </li>
   );
@@ -25,10 +25,10 @@ const Nav = () => (
 const Intro = () => (
   <div className='m-auto-ns f4 f3-m f2-l tc w-8-l normal'>
     <div className='mb3 mb4-ns'>
-      <Highlight color='aqua'>Lost in Tokyo</Highlight> is a directory of fun places to see, play in and <Highlight color='yellow'>explore</Highlight>, in <Highlight color='blue'>Tokyo</Highlight>, Japan. 
+      <Highlight color='aqua'>Lost in Tokyo</Highlight> is a directory of fun places to see, play in and <Highlight color='yellow'>explore</Highlight>, in <Highlight color='blue'>Tokyo</Highlight>, Japan.
     </div>
     <div>
-      From <Highlight color='blue'>museums</Highlight> and <Highlight color='blue'>galleries</Highlight>, to <Highlight color='pink'>Robot Restaurants</Highlight> and <Highlight color='pink'>kitten cafes</Highlight>, Tokyo is the gift that keeps on giving. <Highlight color='yellow'>Dattebayo!</Highlight>  
+      From <Highlight color='blue'>museums</Highlight> and <Highlight color='blue'>galleries</Highlight>, to <Highlight color='pink'>Robot Restaurants</Highlight> and <Highlight color='pink'>kitten cafes</Highlight>, Tokyo is the gift that keeps on giving. <Highlight color='yellow'>Dattebayo!</Highlight>
     </div>
   </div>
 );
