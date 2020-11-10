@@ -22,6 +22,14 @@ const Nav = () => (
   </nav>
 );
 
+const Attraction = ({title, description, image, className}) => (
+  <div className={className}>
+    <h1>{title}</h1>
+    <p>{description}</p>
+    <img src={`../images/${image}`}/>
+  </div>
+);
+
 const Intro = () => (
   <div className='m-auto-ns f4 f3-m f2-l tc w-8-l normal'>
     <div className='mb3 mb4-ns'>
@@ -39,7 +47,11 @@ const App = () => (
       <Nav />
       <Intro />
     </div>
-    <div className="flex flex-wrap container">{/* our attractions list component */}</div>
+    <div className="flex flex-wrap container">
+      {attractions.map(attraction => (
+        <Attraction {...attraction} />
+      ))}
+    </div>
   </div>
 );
 
