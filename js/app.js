@@ -29,8 +29,9 @@ class Attraction extends React.Component {
     this.state = {
       showInfo: false
     };
-    // bind tells toggleInfo about "this"
+    // bind tells toggleInfo and closeInfo about "this"
     this.toggleInfo = this.toggleInfo.bind(this);
+    this.closeInfo = this.closeInfo.bind(this);
   }
 
   //custom method, bound to this above for react to use
@@ -41,6 +42,13 @@ class Attraction extends React.Component {
     }));
   }
 
+  //second custom method
+  closeInfo() {
+    this.setState({
+      showInfo: false
+    });
+  }
+
   render() {
     const {title, description, className, image} = this.props;
     const {showInfo} = this.state;
@@ -48,8 +56,11 @@ class Attraction extends React.Component {
       <div className={`ph4 ph5-ns ph0-l mb4 mb5-ns w-100 overflow-hidden pointer attraction ${
         className
       }`} 
+      // our events
       // where we toggle attraction info
+      // attraction info leaves when mousing away
       onClick={this.toggleInfo}
+      onMouseLeave={this.closeInfo}
       >
         <div className="relative">
           <div 
