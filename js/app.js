@@ -22,7 +22,7 @@ const Nav = () => (
   </nav>
 );
 
-const Overlay = ({showInfo, title, description}) => (
+const Overlay = ({showInfo, title, link, description}) => (
   <div 
     className="absolute w-100 h-100 flex items-center pa3 pa4-ns bg-aqua overlay"
     style = {{
@@ -30,7 +30,11 @@ const Overlay = ({showInfo, title, description}) => (
     }}
   >
     <div>
-      <h1 className="f4 f3-ns mt0 mb2 regular black normal lh-title">{title}</h1>
+      <h1 className="f4 f3-ns mt0 mb2 regular black normal lh-title">
+        <a href={link}>
+          {title}
+        </a>
+      </h1>
       <p className="lh-title lh-copy-ns mv0 black f6 measure-l">   {description}</p>
     </div>
   </div>
@@ -73,7 +77,7 @@ class Attraction extends React.Component {
       // our events
       // where we toggle attraction info
       // attraction info leaves when mousing away
-      onClick={this.toggleInfo}
+      onMouseEnter={this.toggleInfo}
       onMouseLeave={this.closeInfo}
       >
         <div className="relative">
