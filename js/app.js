@@ -22,6 +22,20 @@ const Nav = () => (
   </nav>
 );
 
+const Overlay = ({showInfo, title, description}) => (
+  <div 
+    className="absolute w-100 h-100 flex items-center pa3 pa4-ns bg-aqua overlay"
+    style = {{
+      transform: showInfo ? 'none' : 'translateY(-100%)'
+    }}
+  >
+    <div>
+      <h1 className="f4 f3-ns mt0 mb2 regular black normal lh-title">{title}</h1>
+      <p className="lh-title lh-copy-ns mv0 black f6 measure-l">   {description}</p>
+    </div>
+  </div>
+);
+
 class Attraction extends React.Component {
   constructor(props){
     super(props);
@@ -63,17 +77,8 @@ class Attraction extends React.Component {
       onMouseLeave={this.closeInfo}
       >
         <div className="relative">
-          <div 
-            className="absolute w-100 h-100 flex items-center pa3 pa4-ns bg-aqua overlay"
-            style = {{
-              transform: showInfo ? 'none' : 'translateY(-100%)'
-            }}
-        >
-            <div>
-              <h1 className="f4 f3-ns mt0 mb2 regular black normal lh-title">{title}</h1>
-              <p className="lh-title lh-copy-ns mv0 black f6 measure-l">{description}</p>
-            </div>
-          </div>
+          {/* Here we pass our props and state */}
+          <Overlay {...this.props} {...this.state}/>
           <img src={`../images/${image}`} className="db" />
         </div>
       </div>
